@@ -22,6 +22,7 @@ public class ToDoRecyclerViewAdapter extends CursorRecyclerAdapter {
     public ToDoRecyclerViewAdapter(Context context, Cursor cursor) {
         super(cursor);
         mContext=context;
+        setHasStableIds(true);
     }
 
     @Override

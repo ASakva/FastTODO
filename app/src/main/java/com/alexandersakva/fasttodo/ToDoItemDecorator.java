@@ -1,7 +1,5 @@
 package com.alexandersakva.fasttodo;
 
-import android.database.Cursor;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +12,8 @@ public class ToDoItemDecorator extends RecyclerView.ItemDecoration {
     }
 
     public  int groups[];
-    private int textSize = 50;
-    private int groupSpacing = 100;
+    private int textSize = R.attr.subtitleTextAppearance;
+    private int groupSpacing = 30;
     private Paint paint = new Paint();
     private int position;
     {
@@ -24,7 +22,7 @@ public class ToDoItemDecorator extends RecyclerView.ItemDecoration {
 
 
 
-    @Override
+ /*   @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         for (int i = 0; i < parent.getChildCount(); i++) {
             View view = parent.getChildAt(i);
@@ -38,16 +36,16 @@ public class ToDoItemDecorator extends RecyclerView.ItemDecoration {
             }
         }
     }
-
+*/
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         position = parent.getChildAdapterPosition(view);
 
-        for(int i = 0; i < 4; i++){
+        for(int i = 1; i < 4; i++){
             if (position == groups[i]) {
                 outRect.set(0, groupSpacing, 0, 0);
-            } //else super.getItemOffsets(outRect, view, parent, state);
+            }
         }
     }
 

@@ -7,18 +7,28 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.Calendar;
 
-import static com.alexandersakva.fasttodo.data.ToDosContract.*;
+import static com.alexandersakva.fasttodo.data.ToDosContract.ToDos;
 
-;
+
 
 public class CVDatabaseHelper extends SQLiteOpenHelper {
+
+
+    private static CVDatabaseHelper sInstance;
 
     private static final String DB_NAME = ToDos.TABLE_NAME;
     private static final int DB_VERSION = 1;
 
+    public static synchronized CVDatabaseHelper getInstance(Context context) {
+        if (sInstance == null) {
+            sInstance = new CVDatabaseHelper(context.getApplicationContext());
+        }
+        return sInstance;
+    }
 
 
-    public CVDatabaseHelper(Context context) {
+
+    private CVDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
  //       DB_PATH = context.getApplicationInfo().dataDir +"/databases/";
     }
@@ -45,7 +55,7 @@ public class CVDatabaseHelper extends SQLiteOpenHelper {
         for (int i = 0; i < 15; i ++) {
             time = (int)(c.getTimeInMillis()/1000/60/60/24) + i; //TODO заменить переменной из настроек
 
-        insertTODO(db, "Java" + i, 547657, time, 9879, 0);}
+        insertTODO(db, "Java" + i, "", 547657, time, 9879, 0);}
 
         //insertSkill(db, "SQLite", null, null);
         //insertSkill(db, "OOP", null, null);
@@ -53,9 +63,10 @@ public class CVDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    private static void insertTODO(SQLiteDatabase db, String name, int date_of_set, float date_of_end, int urgency, int done) {
+    private static void insertTODO(SQLiteDatabase db, String name, String comment, int date_of_set, float date_of_end, int urgency, int done) {
         ContentValues skillValues = new ContentValues();
         skillValues.put(ToDos.COLUMN_NAME, name);
+        skillValues.put(ToDos.COLUMN_COMMENT, comment);
         skillValues.put(ToDos.COLUMN_DATE_OF_SET, date_of_set);
         skillValues.put(ToDos.COLUMN_DATE_OF_END, date_of_end);
         skillValues.put(ToDos.COLUMN_DONE, done);

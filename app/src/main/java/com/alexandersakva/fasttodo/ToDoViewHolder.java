@@ -1,14 +1,13 @@
 package com.alexandersakva.fasttodo;
 
 import android.database.Cursor;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alexandersakva.fasttodo.data.ToDosContract;
-
-import java.util.Calendar;
 
 /**
  * Created by Tawiskaron on 14.04.2017.
@@ -16,8 +15,12 @@ import java.util.Calendar;
 
 public class ToDoViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView textView1;
+    private TextView textTitle;
+    private TextView textDescription;
+    private ImageView imageView;
+    private ImageButton buttonImportance;
     public short color;
+    private int importance = 0;
 
     public short getColor() {
         return color;
@@ -27,29 +30,60 @@ public class ToDoViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
 
-        textView1 = (TextView) itemView.findViewById(R.id.card_textView_skill);
+        textTitle = (TextView) itemView.findViewById(R.id.textview_title);
+        imageView = (ImageView) itemView.findViewById(R.id.indicator);
+        textDescription = (TextView) itemView.findViewById(R.id.textview_description);
+        buttonImportance = (ImageButton) itemView.findViewById(R.id.image_button_importance);
+        buttonImportance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                importance = (importance -1) * -1;
+                if (importance == 1) {
+                    buttonImportance.setImageResource(R.drawable.fire_on);
+                } else buttonImportance.setImageResource(R.drawable.fire_off);
+            }
+        });
+
 
 
     }
 
     public void setData(Cursor c) {
 
-        Calendar calendar = Calendar.getInstance();
-        long date = calendar.getTimeInMillis();
-        long endDate = c.getLong(c.getColumnIndex(ToDosContract.ToDos.COLUMN_DATE_OF_END));
-        int daysToEnd = (int)(endDate - (date / 1000 / 60 / 60 / 24));
+        ToDoCalendar calendar = new ToDoCalendar();
+        int date = calendar.currentTime;
+        int endDate = c.getInt(c.getColumnIndex(ToDosContract.ToDos.COLUMN_DATE_OF_END));
+        int daysToEnd = endDate - date;
         if (daysToEnd<=1){
-            itemView.setBackgroundResource(R.color.colorRed);
+            imageView.setBackgroundResource(R.color.colorRed);
         } else if (daysToEnd<=3){
-            itemView.setBackgroundResource(R.color.colorOrange);
+            imageView.setBackgroundResource(R.color.colorOrange);
         } else if (daysToEnd<=7){
-            itemView.setBackgroundResource(R.color.colorYellow);
+            imageView.setBackgroundResource(R.color.colorYellow);
         } else
-            itemView.setBackgroundResource(R.color.colorGreen);
+            imageView.setBackgroundResource(R.color.colorGreen);
 
-        textView1.setText(c.getString(c.getColumnIndex(ToDosContract.ToDos.COLUMN_NAME)));
+        textTitle.setText(c.getString(c.getColumnIndex(ToDosContract.ToDos.COLUMN_NAME)));
+        if (c.getString(c.getColumnIndex(ToDosContract.ToDos.COLUMN_COMMENT)).trim().isEmpty()){
+            textDescription.setVisibility(View.GONE);
+        } else {
+            textDescription.setVisibility(View.VISIBLE);
+            textDescription.setText(c.getString(c.getColumnIndex(ToDosContract.ToDos.COLUMN_COMMENT)));
+        }
+
+        if (c.getInt(c.getColumnIndex(ToDosContract.ToDos.COLUMN_URGENCY)) == 1) {
+            buttonImportance.setImageResource(R.drawable.fire_on);
+        } else buttonImportance.setImageResource(R.drawable.fire_off);
+
+
+
+
+
+
+
 
     }
+
 
     //public boolean getColor(int position){
     //    ToDoViewHolder toDoViewHolder =
