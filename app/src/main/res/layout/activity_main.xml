@@ -8,7 +8,7 @@
     android:gravity="bottom"
     app:umanoPanelHeight="0dp"
     app:umanoParallaxOffset="200dp"
-    app:umanoShadowHeight="8dp"
+    app:umanoShadowHeight="0dp"
     android:id="@+id/sliding_panel"
     app:umanoOverlay="true"
     >

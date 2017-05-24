@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FastTODO</string>
+    <string name="app_name">Done!</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -13,4 +13,28 @@
     <string name="urgency">Urgency</string>
     <string name="description">description...</string>
     <string name="create">Create</string>
+    <string name="title_capital">Title</string>
+    <string name="description_capital">Description</string>
+    <string name="edit_task">Edit task</string>
+    <string name="day_form_1">day</string>
+    <string name="day_form_2">days</string>
+    <string name="day_form_3">days</string>
+    <string name="hour_form_1">hour</string>
+    <string name="hour_form_2">hours</string>
+    <string name="hour_form_3">hours</string>
+    <string name="time_to_end">Time to end</string>
+    <string name="overdue_for">Overdue for</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="delay_for">Delay for</string>
+    <string name="done">Done!</string>
+
+    <string name="hours_letter">h</string>
+    <string name="days_letter">d</string>
+    <string name="delayed_for">Delayed for</string>
+    <string name="delay_task">Delay task</string>
+    <string name="stop">Stop!</string>
+    <string name="afraid">Are you afraid of something?</string>
+    <string name="face_to_fear">No way! You should face to your fear!</string>
+
 </resources>

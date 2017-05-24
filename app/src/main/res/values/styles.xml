@@ -13,6 +13,19 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ToDoDialog"
+        parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:windowAnimationStyle">@style/EditAnimation</item>
+
+        
+    </style>
+    
+    <style name="EditAnimation">
+        <item name="android:windowEnterAnimation">@anim/edit_transition</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

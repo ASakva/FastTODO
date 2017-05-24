@@ -19,12 +19,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.alexandersakva.fasttodo.data.CVDatabaseHelper;
 import com.alexandersakva.fasttodo.data.ToDosContract;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 
 
 public class MainActivity extends AppCompatActivity
@@ -36,12 +37,13 @@ public class MainActivity extends AppCompatActivity
     private InputMethodManager imm;
     private EditText editTextTitle;
     private EditText editTextDescription;
-    private RadioGroup radioGroupUrgency;
+    private RadioRealButtonGroup radioGroupUrgency;
     private ImageButton imageButtonFire;
     private DrawerLayout drawer;
     private int urgency = 0;
     private int importance;
     private ToDosFragment toDosFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         slidingUpPanelLayout.setDragView((FrameLayout)findViewById(R.id.dragview_slider));
         editTextTitle = (EditText)findViewById(R.id.edit_title);
         editTextDescription = (EditText)findViewById(R.id.edit_description);
-        radioGroupUrgency = (RadioGroup) findViewById(R.id.radio_group);
+        radioGroupUrgency = (RadioRealButtonGroup) findViewById(R.id.radio_group);
         imageButtonFire = (ImageButton)findViewById(R.id.image_button);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +162,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+
     }
 
     private void insertToDo() {
@@ -167,16 +170,16 @@ public class MainActivity extends AppCompatActivity
         String description = editTextDescription.getText().toString().trim();
         ToDoCalendar c = new ToDoCalendar();
         int endTime;
-        switch (radioGroupUrgency.getCheckedRadioButtonId()) {
-            case R.id.radioButtonRed :
+        switch (radioGroupUrgency.getPosition()) {
+            case 0 :
                 endTime = c.getEndRed();
                 urgency = 3;
                 break;
-            case R.id.radioButtonOrange :
+            case 1 :
                 endTime = c.getEndOrange();
                 urgency = 2;
                 break;
-            case R.id.radioButtonYellow :
+            case 2 :
                 endTime = c.getEndYellow();
                 urgency = 1;
                 break;
@@ -192,6 +195,7 @@ public class MainActivity extends AppCompatActivity
         values.put(ToDosContract.ToDos.COLUMN_DATE_OF_END, endTime);
         values.put(ToDosContract.ToDos.COLUMN_URGENCY, importance);
         db.insert(ToDosContract.ToDos.TABLE_NAME, null, values);
+
 
     }
 

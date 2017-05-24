@@ -5,20 +5,36 @@ import java.util.GregorianCalendar;
 
 public class ToDoCalendar extends GregorianCalendar {
 
-    int daysGreen = 14;
-    int daysYellow = 7;
-    int daysOrange = 3;
-    int daysRed = 1;
+    public int getHoursGreen() {
+        return hoursGreen;
+    }
 
-    int overdueDays = 3;
+    public int getHoursYellow() {
+        return hoursYellow;
+    }
 
-    int currentTime = (int)(getTimeInMillis()/1000/60/60/24);
+    public int getHoursOrange() {
+        return hoursOrange;
+    }
 
-    int endGreen = currentTime + daysGreen;
-    int endYellow = currentTime + daysYellow;
-    int endOrange = currentTime + daysOrange;
-    int endRed = currentTime + daysRed;
-    int overdueDate = currentTime - overdueDays;
+    public int getHoursRed() {
+        return hoursRed;
+    }
+
+    private int hoursGreen = 10*24;
+    private int hoursYellow = 5*24;
+    private int hoursOrange = 48;
+    private int hoursRed = 12;
+
+    int overdueTime = 72;
+
+    int currentTime = (int)(getTimeInMillis()/1000/60/60);
+
+    private int endGreen = currentTime + hoursGreen;
+    private int endYellow = currentTime + hoursYellow;
+    private int endOrange = currentTime + hoursOrange;
+    private int endRed = currentTime + hoursRed;
+    private int overdueDate = currentTime - overdueTime;
 
     public int getEndGreen() {
         return endGreen;

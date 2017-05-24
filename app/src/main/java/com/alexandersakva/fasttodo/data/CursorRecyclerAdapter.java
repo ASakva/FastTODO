@@ -2,11 +2,9 @@ package com.alexandersakva.fasttodo.data;
 
 
 import android.database.ContentObserver;
-
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Handler;
-import android.provider.BaseColumns;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Filter;
 import android.widget.FilterQueryProvider;
@@ -37,7 +35,7 @@ public abstract class CursorRecyclerAdapter<VH
         boolean cursorPresent = c != null;
         mCursor = c;
         mDataValid = cursorPresent;
-        mRowIDColumn = cursorPresent ? c.getColumnIndexOrThrow(BaseColumns._ID) : -1;
+        mRowIDColumn = cursorPresent ? c.getColumnIndexOrThrow(ToDosContract.ToDos._ID) : -1;
         mChangeObserver = new ChangeObserver();
         mDataSetObserver = new MyDataSetObserver();
 

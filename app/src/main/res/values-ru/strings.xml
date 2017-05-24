@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Done!</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_task">Новая задача</string>
+    <string name="title">заголовок...</string>
+    <string name="urgency">Срочность</string>
+    <string name="description">описание...</string>
+    <string name="create">Создать</string>
+    <string name="title_capital">Заголовок</string>
+    <string name="description_capital">Описание</string>
+    <string name="edit_task">Изменить</string>
+    <string name="day_form_1">день</string>
+    <string name="day_form_2">дня</string>
+    <string name="day_form_3">дней</string>
+    <string name="hour_form_1">час</string>
+    <string name="hour_form_2">часа</string>
+    <string name="hour_form_3">часов</string>
+    <string name="time_to_end">Осталось</string>
+    <string name="overdue_for">Просрочено на</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="delay_for">Отложить на</string>
+    <string name="done">Готово!</string>
+
+    <string name="hours_letter">ч</string>
+    <string name="days_letter">д</string>
+    <string name="delayed_for">Отложено на</string>
+    <string name="delay_task">Отложить задачу</string>
+    <string name="stop">Стоп!</string>
+    <string name="afraid">Вы чего-то боитесь??</string>
+    <string name="face_to_fear">Нет! Вы должны встретиться со своими страхами!</string>
+
+</resources>

@@ -12,10 +12,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="4dp"
         android:background="@color/cardview_light_background"
         android:clickable="false">
 
@@ -63,61 +63,17 @@
             android:id="@+id/text_view_urgency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/urgency"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_title" />
 
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="212dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_urgency">
-
-            <RadioButton
-                android:id="@+id/radioButtonRed"
-                style="@style/ToDoRadioRed"
-                android:layout_width="53dp"
-                android:layout_height="wrap_content"
-                android:checked="true" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOrange"
-                style="@style/ToDoRadioOrange"
-                android:layout_width="53dp"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:visibility="visible" />
-
-            <RadioButton
-                android:id="@+id/radioButtonYellow"
-                style="@style/ToDoRadioYellow"
-                android:layout_width="53dp"
-                android:layout_height="wrap_content"
-                android:checked="true" />
-
-            <RadioButton
-                android:id="@+id/radioButtonGreen"
-                style="@style/ToDoRadioGreen"
-                android:layout_width="53dp"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:textColorLink="@color/colorGreen" />
-
-        </RadioGroup>
-
         <Button
             android:id="@+id/button_create"
-            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -148,7 +104,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/description"
             android:inputType="textMultiLine"
@@ -156,6 +111,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/radio_group"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -164,31 +120,87 @@
             style="@android:style/Widget.DeviceDefault.Light.ImageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="0dp"
             android:background="@android:color/transparent"
             android:onClick="onClickFire"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/radio_group"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="@+id/radio_group"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/radio_group"
-            app:layout_constraintVertical_bias="0.50"
-            app:srcCompat="@drawable/fire_off" />
+            app:srcCompat="@drawable/fire_off"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/radio_group"
+            android:layout_marginBottom="0dp" />
 
         <Button
             android:id="@+id/button"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="50dp"
+            android:layout_width="88dp"
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:onClick="onClickHidden"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="8dp" />
+
+
+        <co.ceryle.radiorealbutton.RadioRealButtonGroup
+            android:id="@+id/radio_group"
+            android:layout_width="150dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent"
+            android:maxWidth="220dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toLeftOf="@+id/image_button"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_urgency"
+            app:rrbg_animateSelector="anticipate"
+            app:rrbg_animateTexts_enter="accelerateDecelerate"
+            app:rrbg_dividerSize="1dp"
+            app:rrbg_radius="4dp"
+            app:rrbg_selectorBringToFront="true"
+            app:rrbg_selectorColor="@color/colorAccent"
+            app:rrbg_selectorSize="6dp">
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/radioButtonRed"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                app:rrb_backgroundColor="@color/colorRed"
+                app:rrb_checked="false"
+                app:rrb_ripple="true"
+                app:rrb_rippleColor="@color/colorRed"
+                app:rrb_text=" "
+                app:rrb_textColor="@android:color/black"
+                app:rrb_textFillSpace="true"
+                app:rrb_textSize="20dp" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/radioButtonOrange"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:background="@drawable/radio_off_orange"
+                app:rrb_backgroundColor="@color/colorOrange"
+                app:rrb_checked="true"
+                app:rrb_ripple="true"
+                app:rrb_rippleColor="@color/colorOrange"
+                app:rrb_textColor="@android:color/black" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/radioButtonGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:background="@drawable/radio_off_green"
+                app:rrb_backgroundColor="@color/colorGreen"
+                app:rrb_ripple="true"
+                app:rrb_rippleColor="@color/colorGreen"
+                app:rrb_textColor="@android:color/black" />
+        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
 
     </android.support.constraint.ConstraintLayout>

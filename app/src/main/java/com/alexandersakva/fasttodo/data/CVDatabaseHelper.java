@@ -52,10 +52,10 @@ public class CVDatabaseHelper extends SQLiteOpenHelper {
 
         int time;
 
-        for (int i = 0; i < 15; i ++) {
-            time = (int)(c.getTimeInMillis()/1000/60/60/24) + i; //TODO заменить переменной из настроек
+        for (int i = 0; i < 50; i ++) {
+            time = (int)(c.getTimeInMillis()/1000/60/60) + (i); //TODO заменить переменной из настроек
 
-        insertTODO(db, "Java" + i, "", 547657, time, 9879, 0);}
+        insertTODO(db, "Очень важное дело № " + i, "", 547657, time, 0, 0);}
 
         //insertSkill(db, "SQLite", null, null);
         //insertSkill(db, "OOP", null, null);
